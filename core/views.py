@@ -1,10 +1,32 @@
 from core.models import OBUser
 from django.views.decorators.csrf import csrf_exempt
 from core.forms import get_validation_errors, UserRegisterForm
-from core.utilities import build_response, prepare_response
+from core.utilities import build_response, prepare_response, get_domain
 import time
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+from django.conf import settings
+import urllib
+from django.http import HttpResponseRedirect
+from django.contrib import auth
+
+
+def facebook_login(request):
+    # TODO: Add CSRF prevention
+    login_link = 'https://www.facebook.com/dialog/oauth?' + urllib.urlencode(
+        {
+            'client_id': settings.FACEBOOK_APP_ID,
+            'redirect_uri': get_domain(request) + '/',
+            'response_type': 'code',
+            'scope': 'email',
+        }
+    )
+    return HttpResponseRedirect(login_link)
+
+
+def signout(request):
+    auth.logout(request)
+    return HttpResponseRedirect('/')
 
 
 @csrf_exempt

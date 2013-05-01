@@ -3,9 +3,9 @@ from settings_base import *
 ENVIRONMENT = 'PROD'
 
 ALLOWED_HOSTS = [
-	'ohboss.herokuapp.com',
-	'ohboss.com',
-	'www.ohboss.com',
+    'ohboss.herokuapp.com',
+    'ohboss.com',
+    'www.ohboss.com',
 ]
 
 DEBUG = False

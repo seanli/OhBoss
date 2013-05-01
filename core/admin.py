@@ -7,7 +7,7 @@ class OBUserAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('email', 'password')
+            'fields': ('email', 'password', 'facebook_id', 'tz_offset', 'display_name')
         }),
         ('Status', {
             'classes': ('collapse',),

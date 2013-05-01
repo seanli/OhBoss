@@ -31,6 +31,9 @@ class OBUser(AbstractBaseUser, PermissionsMixin):
         help_text='Designates whether the user can log into this admin site.')
     is_active = models.BooleanField('active', default=True,
         help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.')
+    tz_offset = models.IntegerField(default=0)
+    facebook_id = models.CharField(max_length=200, blank=True, null=True)
+    display_name = models.CharField(max_length=200)
 
     def __unicode__(self):
         return self.email
