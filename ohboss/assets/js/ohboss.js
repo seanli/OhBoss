@@ -1,2 +1,3 @@
-$(document).ready(function() {
-});
+function IndexCtrl($scope) {
+  $scope.user = 'Test';
+}

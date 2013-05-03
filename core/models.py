@@ -34,6 +34,8 @@ class OBUser(AbstractBaseUser, PermissionsMixin):
     tz_offset = models.IntegerField(default=0)
     facebook_id = models.CharField(max_length=200, blank=True, null=True)
     display_name = models.CharField(max_length=200)
+    price = models.PositiveIntegerField(default=100)
+    cash = models.PositiveIntegerField(default=250)
 
     def __unicode__(self):
         return self.email
@@ -43,6 +45,8 @@ class OBUser(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return self.email
+
+    def 
 
     objects = OBUserManager()
 
