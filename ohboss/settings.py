@@ -1,12 +1,15 @@
 import os
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+PROJECT_DIR = PROJECT_ROOT.split(os.sep)[-1]
 
 try:
-    SCHOOLAX_ENV = os.environ['OHBOSS_ENV']
-    if SCHOOLAX_ENV == 'PROD':
+    # Generated global environment variable. Format: APPNAME_ENV
+    env_name = '%s_ENV' % PROJECT_DIR.upper()
+    environment = os.environ[env_name]
+    if environment == 'PROD':
         from settings_prod import *
-    elif SCHOOLAX_ENV == 'QA':
+    elif environment == 'QA':
         from settings_qa import *
     else:
         from settings_dev import *

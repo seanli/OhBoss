@@ -9,10 +9,10 @@ DAJAXICE_DEBUG = DEBUG
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ohboss',
-        'USER': 'ohboss_admin',
-        'PASSWORD': '1990106',
-        'HOST': '',
+        'NAME': '%s' % PROJECT_DIR,
+        'USER': '%s_admin' % PROJECT_DIR,
+        'PASSWORD': 'localhost',
+        'HOST': 'localhost',
         'PORT': '',
     }
 }
@@ -22,5 +22,5 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'
 
-FACEBOOK_APP_ID = '144073369110744'
-FACEBOOK_APP_SECRET = '1f2935bf3a19932d380649962e457578'
+FACEBOOK_APP_ID = '164671287034955'
+FACEBOOK_APP_SECRET = 'ab27e31953712a42dd7e3e92a4dcbc60'

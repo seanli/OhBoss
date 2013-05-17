@@ -1,8 +1,6 @@
 import os
 import dj_database_url
 
-# Django settings for fundstrap project.
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -55,7 +53,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '89j0@^&qn6zku@)=far((o$-!^n4^$4f3+_part0r%!i@ea0s8'
+SECRET_KEY = 'x8!c#)h2)kclx)q1c$m(ntunc$c0w1(d&crp9f339az+hreki3'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -69,15 +67,14 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'core.middleware.FacebookMiddleware',
-    # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = '%s.urls' % PROJECT_DIR
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'ohboss.wsgi.application'
+WSGI_APPLICATION = '%s.wsgi.application' % PROJECT_DIR
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT, 'templates'),
@@ -87,6 +84,8 @@ FIXTURE_DIRS = (
     os.path.join(PROJECT_ROOT, 'fixtures'),
 )
 
+COMMANDS_ROOT = os.path.join(PROJECT_ROOT, '../core/management/commands/')
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -94,12 +93,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    'raven.contrib.django.raven_compat',
     'compressor',
     'south',
     'core',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -131,9 +127,4 @@ LOGGING = {
     }
 }
 
-AUTH_USER_MODEL = 'core.OBUser'
-
-AWS_ACCESS_KEY_ID = 'AKIAIWUXQY7UILQNXKDA'
-AWS_SECRET_ACCESS_KEY = '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'
-
-COMMANDS_ROOT = os.path.join(PROJECT_ROOT, '../core/management/commands/'),
+AUTH_USER_MODEL = 'core.User'

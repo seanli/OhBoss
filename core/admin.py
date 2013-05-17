@@ -1,13 +1,13 @@
 from django.contrib import admin
-from core.models import OBUser
+from core.models import User
 from django.contrib.sessions.models import Session
 
 
-class OBUserAdmin(admin.ModelAdmin):
+class UserAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('email', 'facebook_id', 'tz_offset', 'display_name', 'price', 'cash')
+            'fields': ('email', 'facebook_id', 'tz_offset', 'display_name')
         }),
         ('Status', {
             'classes': ('collapse',),
@@ -24,5 +24,5 @@ class OBUserAdmin(admin.ModelAdmin):
     filter_horizontal = ['groups', 'user_permissions']
 
 
-admin.site.register(OBUser, OBUserAdmin)
+admin.site.register(User, UserAdmin)
 admin.site.register(Session)
