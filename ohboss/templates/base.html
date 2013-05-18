@@ -14,17 +14,43 @@
 
   <script src="{{ STATIC_URL }}js/libs/less.js"></script>
   <script src="{{ STATIC_URL }}js/libs/jquery.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"></script>
-  <script src="https://cdn.firebase.com/v0/firebase.js"></script>
-  <script src="https://cdn.firebase.com/v0/firebase-auth-client.js"></script>
-  <script src="{{ STATIC_URL }}js/libs/angularFire.js"></script>
-  <script src="{{ STATIC_URL }}js/modules.js"></script>
-  <script src="{{ STATIC_URL }}js/app.js"></script>
+
+  <style>
+
+    body {
+      padding-top: 60px;
+    }
+
+  </style>
 
 </head>
 
 <body>
+  <div class="navbar navbar-fixed-top">
+    <div class="container">
+      <a class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="navbar-brand" href="#">Oh Boss</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav pull-right">
+          {% if user.is_authenticated %}
+          <li><a href="#">{{ user.display_name }}</a></li>
+          <li><a href="/logout">Logout</a></li>
+          {% else %}
+          <li><a href="/facebook-login">Facebook Connect</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
   {% block content %}{% endblock %}
+  </div>
 </body>
 </html>

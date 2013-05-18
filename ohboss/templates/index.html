@@ -1,23 +1,26 @@
 {% extends "base.html" %}
 
-{% block title %}Index{% endblock %}
+{% block title %}Oh Boss{% endblock %}
 
 {% block content %}
 
-{% verbatim %}
-
-<div class="well container"ng-app="project">
-  <div ng-view>
-  </div>
+<div id="friend-list">
 </div>
 
-{% endverbatim %}
+<script>
 
-{% if user.is_authenticated %}
-{{ user.display_name }}
-<a class="btn btn-default" href="/logout">Logout</a>
-{% else %}
-<a class="btn btn-primary" href="/facebook-login">Facebook Connect</a>
-{% endif %}
+$(document).ready(function() {
+    $.ajax({
+        type: 'POST',
+        url: '/api/friend/list/',
+        success: function(data) {
+            for(var i = 0; i < data.friend_list.length; i++) {
+                $('#friend-list').append('<div><img src="https://graph.facebook.com/' + data.friend_list[i].id + '/picture?type=small&width=50&height=50">' + data.friend_list[i].name + '</div>');
+            }
+        }
+    })
+});
+
+</script>
 
 {% endblock %}
